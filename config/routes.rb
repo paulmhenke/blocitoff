@@ -1,10 +1,20 @@
 Rails.application.routes.draw do
-  get 'users/show'
+  #get 'users/show'
 
   devise_for :users
-  get 'welcome/index'
+  resources :users, only: [:update, :show]
   
-  root to: 'welcome#index'
+  authenticated :user do
+    root to: "users#show", as: :authenticated_root, via: :get
+  end
+
+  unauthenticated do
+    root 'welcome#index'
+  end
+  
+  #get 'welcome/index'
+  
+  #root to: 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
