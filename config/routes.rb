@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  resources :users, only: [:update, :show]
+  
+  resources :users, only: [:update, :show] do
+    resources :items, only: [:create]
+  end
   
   authenticated :user do
     root to: "users#show", as: :authenticated_root, via: :get
@@ -10,6 +13,7 @@ Rails.application.routes.draw do
   unauthenticated do
     root 'welcome#index'
   end
+end
   
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -66,4 +70,4 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end
+

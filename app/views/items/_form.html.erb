@@ -1,0 +1,8 @@
+<% if current_user %>
+  
+  <%= form_for [@user, @user.items.build]  do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.submit %>
+  <% end %>
+<% end %>
