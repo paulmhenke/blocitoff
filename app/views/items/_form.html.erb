@@ -1,6 +1,6 @@
 <% if current_user %>
   
-  <%= form_for [@user, Item.new]  do |f| %>
+  <%= form_for [@user, Item.new] do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %>
     <%= f.submit %>
