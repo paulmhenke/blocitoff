@@ -1,11 +1,11 @@
 require 'faker'
 
-member = User.create!(name: "Member User", email: "member@example.com", password: "helloworld", id: 100)
+member = User.create!(name: "Member User", email: "member@example.com", password: "helloworld")
 member.skip_confirmation!
 member.save!   
     
 10.times do
-Item.create!(name: Faker::Lorem.sentence, user_id: 100)
+Item.create!(name: Faker::Lorem.sentence, user_id: member.id)
 end
 
 puts "Seed Finished"
