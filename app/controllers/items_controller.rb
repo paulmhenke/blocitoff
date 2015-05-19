@@ -14,4 +14,19 @@ class ItemsController < ApplicationController
       flash[:danger] = "No Dice."
     end
   end
+  
+  def destroy
+    @item = Item.find(params[:id])
+    
+    if @item.destroy
+      flash[:notice] = "Task marked as completed."
+    else
+      flash[:error] = "Error has occured."
+    end
+    
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
 end
