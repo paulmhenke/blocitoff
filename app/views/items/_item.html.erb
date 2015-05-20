@@ -1,7 +1,7 @@
 
 <%= content_tag :p, id: "item-#{item.id}", class: 'item' do %>
     <%= item.name %> |
-    added <%= time_ago_in_words(item.created_at) %> ago |
+    <%= item.days_left %> days left to complete this Item |
     <%= link_to "", [current_user, item], method: :delete, class: 'glyphicon glyphicon-ok', remote: true %>
 <% end %>
 
